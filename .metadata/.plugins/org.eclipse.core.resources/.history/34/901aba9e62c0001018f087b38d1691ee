@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CSS(Cascading Style Sheets)의 우선순위에 대해서 알아본다.</title>
+
+<style type="text/css">
+	/* css주석문 */
+
+	div{
+		border: dashed 1px blue; /* 테두리 : 점선 두께 1px 파랑색 */
+	}
+</style>
+
+</head>
+<body>
+	<!--  HTML 주석문  -->
+	<div style ="border: solid 2px black; background-color: #ffff99">나는 div1</div>
+	<div>나는 div2</div>
+	<div>나는 div3</div>
+	<div>나는 div4</div>
+</body>
+</html>

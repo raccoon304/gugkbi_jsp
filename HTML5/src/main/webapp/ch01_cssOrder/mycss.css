@@ -1,0 +1,8 @@
+@charset "UTF-8";
+
+div {
+	font-size: 20pt; /* 글자크기 40 */
+	font-style: italic; /* 글자 모양 : 삐뚤게*/
+	text-align: center !important; /*가운데 정렬*/
+	/*!important 사용시 우선적으로 적용*/
+}
