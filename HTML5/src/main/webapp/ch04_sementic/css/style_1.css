@@ -1,0 +1,26 @@
+@charset "UTF-8";
+/* 기본적인 폰트 설정하기  */
+*{
+    font-family: Arial, "MS Trebuchet", sans-serif;
+     /* 공백이 있으면 반드시 ""로 감싸주어야함.  */
+}
+/* *은 모든 태그를 말함. */
+body{
+    border: solid 1px red;
+}
+header#page_header >div > ul{
+    list-style-type: none;
+    border: solid 1px gray;
+}
+
+header#page_header >div > ul > li {
+    border: solid 1px red;
+    display: inline-block;
+    width: 15%;
+    height: 30px;
+    margin: 0 5% 0 0;
+    text-align: center;
+    background-color: gray;
+    font-weight: bold;
+    font-size: 13pt;
+}

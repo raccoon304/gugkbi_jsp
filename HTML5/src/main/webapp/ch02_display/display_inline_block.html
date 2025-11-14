@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>display 에 대해서 알아본다.</title>
+</head>
+<body style="border: solid 1px red; padding: 2% 3%;">
+    <h1>👍bolck 방식 세로로 떨어지는 방 </h1>
+    
+    <h1>h1의 display의 기본값은 bolck 방식이다.</h1>
+    <h2>h2의 display의 기본값은 bolck 방식이다.</h2>
+    <h3>h3의 display의 기본값은 bolck 방식이다.</h3>
+    <h4>h4의 display의 기본값은 bolck 방식이다.</h4>
+    <h5>h5의 display의 기본값은 bolck 방식이다.</h5>
+    <h6>h6의 display의 기본값은 bolck 방식이다.</h6>
+    <!-- h1부터 h6까지만 있다. -->
+
+    <br> <!-- 줄바꿈 -->
+    
+    <div>div는 display가 block 방식이다.</div>
+    <div>div는 display가 block 방식이다.</div>
+
+    <hr> <!-- 수평선 -->
+    <hr style="border : solid 3px red;"><!-- 수평선 -->
+    <hr style="border : solid 3px blue;"><!-- 수평선 -->
+    
+    <h1>inline 방식 - 가로로 떨어지는 방식</h1>
+    <a href="www.naver.com"> 네이버</a> <!-- 페이지 이동 -->
+    <a href="www.daum.net"> 다음</a><!-- 페이지 이동 -->
+    <a href="www.nate.com"> 네이트</a> <!-- 페이지 이동 -->
+
+    <br><!-- 줄바꿈 -->
+    <label>레이블 1 label 태그는 display가 inline 방식이다.</label>
+    <label>레이블 2 label 태그는 display가 inline 방식이다.</label>
+    <label>레이블 3 label 태그는 display가 inline 방식이다.</label>
+
+    <br><!-- 줄바꿈 -->
+    <span>스팬 1 sapn 태그는 display가 inline 방식이다.</span>
+    <span>스팬 2 sapn 태그는 display가 inline 방식이다.</span>
+    <span>스팬 3 sapn 태그는 display가 inline 방식이다.</span>
+    
+    <hr><!-- 수평선 -->
+
+    <div style="border: solid 1px red; width: 300px; height: 150px; background-color: #ccffec; margin: 20px 30px 5px 5px;">div1 블럭요소(block element)는 width 및 height가 적용된다.</div>
+    <div style="border: solid 1px blue; width: 70%; background-color: #ccffe6; margin: 5%; ">div2 블럭요소(block element)는 width 및 height가 적용된다.</div>    
+    <div style="border: solid 1px blue; width: 70%; background-color: #ccffe6; margin: 20px 0 0 0; ">div2 블럭요소(block element)는 width 및 height가 적용된다.</div>    
+    <!-- %는 width에만 적용되면 height에는 적용되지 않는다. %는 화면의 비율의 %로 한다. -->
+     <!-- margin의 경우 바깥 여백임. -->
+    <div>div3 블럭요소(block element)는 width 및 height가 적용된다.</div>
+
+    <hr>
+
+    <span style="border: solid 1px black; width: 500px; background-color: red; color: white;">
+        span1 인라인요소(inline element)는 width 및 height가 적용되지 않는다. </span>
+    <span style="border: solid 1px black; width: 300px; background-color: blue; color: white;">
+        span2 인라인요소(inline element)는 width 및 height가 적용되지 않는다. </span>
+    <span style="border: solid 1px black; width: 200px; background-color: green; color: white;">
+        span3 인라인요소(inline element)는 width 및 height가 적용되지 않는다. </span>
+
+    <br>
+    <hr>
+    <br>
+
+    <span style="display: block; border: solid 1px blue;">짜장면</span>
+    <span style="display: block; border: solid 1px blue;">탕수육</span>
+    <span style="display: block; border: solid 1px blue;">팔보채</span>
+    <!-- inline element 인 span 태그를 block 방식으로 변경함. 그러므로 세로형태로 보여진다 
+      block 방식의 width 크기를 성정안해주면 기본 width 크기는 화면 전체 크기로 잡히게 된다. -->
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+    <span style="display: inline-block; border: solid 1px red; background-color: yellow; width: 10%; height: 30%; text-align: center;">감자탕</span>
+    <span style="display: inline-block; border: solid 1px red; background-color: yellow; width: 10%; height: 30%; text-align: center; margin: 0 30px;">라면</span>
+    <span style="display: inline-block; border: solid 1px red; background-color: yellow; width: 10%; height: 30%; text-align: center;">피자</span>
+    <!-- 인라인 방식은 그냥 width와 height를 줄수 없지만 inline-block으로 변경하면 가능하다 -->
+
+    <div style="border: solid 1px red; background-color: #ccffff; margin: 30px 0;">
+        여기는 div 입니다.
+    </div>
+    <div style="border: solid 1px red; background-color: #ffffcc; width: 60%; height: 150px; margin: 0 auto 0 auto; ">
+       
+    <!-- auto 하게 되면 자동적으로 중간을 계산해서 맞춰준다 -->
+     div1 블럭요소(block element)를 <span style="font-weight: border; font-size: 10pt; color: blue; "> 화면 가운데</span>로 하려면 먼저 width 크기를 잡은 후
+    margin: 0 auto; 으로 주면 0 은 상하는 여백이 없고, 좌우의 여백크기는 width 크기를 주고 남은 크기를 1/2로 균등분할해서 준다.<br>
+    그러므로 가운데에 위치하게 된다. 
+    </div>        
+
+    <div style="border: solid 1px blue; margin: 12% 6%; padding: 3%; background-color: skyblue; ">
+                                        <!-- margin: 50px 100px;
+                                        margin: 6%;
+                                        margin-top: 6%;
+                                        margin-right: 6%;
+                                        margin-bottom: 6%;
+                                        margin-left: 6%; -->
+                                        <!-- padding: 10px 20px 30px 40px 상 우 하 좌 
+                                        padding: 20px 40px 위아래 / 좌우의
+                                        padding: 40px 사방 -->
+                                        <!-- padding: 3%;
+                                        padding-top: 3%;
+                                        padding-right: 3%;
+                                        padding-bottom: 3%;
+                                        padding-left: 3%; -->
+        안쪽 여백에 대해서 알아보기
+        안쪽 여백에 대해서 알아보기
+        안쪽 여백에 대해서 알아보기
+        안쪽 여백에 대해서 알아보기
+        안쪽 여백에 대해서 알아보기
+    </div>
+    <!-- margin은 절대 크기보다 %로 상대크기를 잡는것이 일반적임.  -->
+     
+    <div>
+        inline방식으로 사용되어지는 태그는 &lt;a&gt; &nbsp; &lt;label&gt; &nbsp; &lt;span&gt; 이 있습니다. 
+    <!-- &lt; 부등호( < ) less then
+         &gt; 부등호( > ) great then 
+         &nbsp; " " 공백 1개를 의미한다.-->
+    </div>
+
+
+
+</body>
+</html>
