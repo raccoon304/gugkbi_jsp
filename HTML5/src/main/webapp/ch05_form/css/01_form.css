@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+div#container{
+    border: solid 0px red;
+    width: 80%;
+    margin: 5% auto;
+}
+
+div#container > form {
+    border: solid 0px blue;
+    width: 50%;
+    margin: 0 auto;
+}
+
+div#container > form > fieldset > legend{
+    font-size: 20pt;
+    background-color: black;
+    color: white;
+    padding: 0.5% 1%;
+    margin: 0 3%;
+}
+
+div#container > form > fieldset > ul{
+    list-style: none;
+    padding: 0 0 0 2.4%;
+}
+
+div#container > form > fieldset > ul > li{
+    border: solid 0px blue;
+    line-height: 40px;
+}
+
+div#container > form > fieldset > ul > li > label{
+    display: inline-block;
+    width: 20%; 
+    /* inline은 width , height 가 적용이 안되기에 display를 inline-block으로 변경  */
+    border: solid 0px red;
+}
+
+div#container > form > fieldset > ul > li > input{
+    height: 15pt;
+}
+
+div#container > form > fieldset > ul > li:last-child >input{
+    width: 15%;
+    height: 35px;
+    font-size: 16pt;
+    margin: 5% 3% 0 0;
+    padding: 0.5% 0.5% 1.5% 0.5%;
+    color: white;
+    border: none;
+}
+/* 
+div#container > form > fieldset > ul > li:last-child > input:first-child{
+    background-color: red;
+
+} 
+또는
+div#container > form > fieldset > ul > li:last-child > input[type="submit"]{
+    background-color: orange;
+}
+또는
+*/
+div#container > form > fieldset > ul > li:last-child > input[value="전송"]{
+    background-color: green;
+}
+div#container > form > fieldset > ul > li:last-child > input[value="취소"]{
+    background-color: green;
+}

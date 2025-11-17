@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form에 대해서 알아보기. - 1 </title>
+
+    <link rel="stylesheet" href="css/01_form.css">
+</head>
+<body>
+    <div id="container">
+        <!-- form 태그는 데이터 전송시 사용되는 태그 -->
+        <form>
+            <!-- fieldset 태그는 form에 입력되어지는 정보들을 grouping해주는 역할 -->
+            <fieldset>
+                <!-- <legend>태그는 fieldset에 대한 제목을 지정하는것. -->
+                <legend>프로젝트 정보 </legend>
+                <ul>
+                    <li><label for="prjname">프로젝트명</label>
+                        <input id="prjname" type="text" size="20" maxlength="15" placeholder="예: 인사관리프로젝트" autofocus required/>
+                        <!-- maxlength는 입력할수 있는최대 글자수 DB확인후 맞춰서 넣는게 좋다. -->
+                        <!-- autofocus : 페이지 로드시 자동 포커스 지정 
+                        placeholder="예: 인사관리프로젝트" 은 예시로 미리 적어주는 것 
+                        required = not null (필수입력)-->
+                    </li>
+                        
+                    <li><label for="priorty">중요도</label> 
+                        <input type="range" min="1" max="10" value="5" step="1"/>
+                    </li>
+                    <li><label for="time">완료예상시간</label> 
+                        <input type="number" min="1" max="100" value="10" step="1"/>
+                    </li>
+                    <li><label>시작날짜</label>
+                        <input type="date" />
+                        <!-- date : 날짜필드 -->
+                    </li>
+                    <li>
+                        <label>월</label>
+                        <input type="month" />
+                        <!-- month : 월단위 필드 -->
+                    </li>
+                    <li>
+                        <label>주</label>
+                        <input type="week" />
+                        <!-- week : 주 단위필드 -->
+                    </li>
+                    <li>
+                        <label>시간</label>
+                        <input type="time" />
+                        <!-- time : 시간 단위필드 -->
+                    </li>
+                    <li>
+                        <label>이메일</label>
+                        <input id="email" type="email" required/>
+                        <!-- email : 이메일필드 -->
+                    </li>
+                    <li>
+                        <label for="url">URL</label>
+                        <input id="url" type="url">
+                        <!-- url : url 필드 -->
+                    </li>
+                    <li>
+                        <label for="search">검색</label>
+                        <input id="search" type="search">
+                        <!-- url : url 필드 -->
+                    </li>
+                    <li>
+                        <label for="color">프로젝트색상</label>
+                        <input id="color" type="color">
+                        <!-- url : url 필드 -->
+                    </li>
+                    <li>
+                        <input type="submit" value="전송" />
+                        <input type="reset" value="취소">
+                    </li>
+                    
+                </ul>
+            </fieldset>
+        </form>
+    </div>
+</body>
+</html>

@@ -14,26 +14,34 @@ body{
 }
 
 body > div#wrap {
-    border: solid 1px blue;
+    border: solid 0px blue;
     width: 70%;
     margin: 0 auto;
 }
 /* 명확하게 하기위해 어디 안에 있는지를 밝히는거임. 그냥 div#warp 만 해도 되긴함. */
 
-body > div#wrap > header#page_header > nav > ul{
+body > div#wrap > header#page_header > nav > ul,
+body > div#wrap > section#sidebar > nav > ul,
+div#wrap footer#page_footer ul{
     border: solid 0px red;
     list-style-type: none;
     padding: 0;
     font-size: 16pt;
-
-
 }
 
 body > div#wrap > header#page_header > nav > ul > li{
-    border: solid 1px gray;
+    border: solid 0px gray;
     display: inline-block;
     width: 15%;
     margin: 0 2% 0 0;
+}
+
+div#wrap footer#page_footer ul > li{
+    border: solid 0px gray;
+    display: inline-block;
+    width: 10%;
+    margin: 0 2% 0 0;
+    font-size: 13pt;
 }
 
 
@@ -45,6 +53,7 @@ a {
 }
 
 /* a 태그에 방문하기전의 링크 */
+body > div#wrap > header#page_header > nav > ul > li
 a:visited{
     color: pink;
 }
@@ -52,8 +61,109 @@ a:visited{
 /* a태그에 방문후의 링크 */
 
 /* a태그에 마우스 포인터를 올려 놓알을 때 */
-a:hover{
+/* 헤더페이지 내 네비 리스트만 a:hover를 적용. */
+body > div#wrap > header#page_header > nav > ul > li a:hover, 
+div#container > a:hover{
     background-color: red;
     color: yellow;
     font-weight: bolder;
+}
+
+div#wrap > hr{
+    border: solid 3px blue;
+    margin-top: 2%;
+}
+
+div#wrap > section#posts{
+    border: solid 0px red;
+    float: left;
+    width: 72%;
+}
+
+/*  div#wrap > section#posts태그(요소/element)속에 있는 자식을 포함한 모든 자손 태그들 중 aside태그만을 말함. */
+div#wrap > section#posts aside{
+    border: solid 0px gray;
+    float: right;  /* 가로방향으로 표시하는데 출발점은 오른쪽에서 출발한다. */
+    width: 35%;
+    color: #B30059;
+    font-size: 18pt;
+    font-weight: bolder;
+    margin-top: -3.5%; 
+    /* line-height: 40px; 글자의 맨 위에서부터 40px 만큼을 준다 */
+    line-height: 180%; /* 글자의 맨 위에서부터 1.8배를 준다. 만큼을 준다 */
+    margin-left: 3%
+}
+
+div#wrap > section#sidebar{
+    /* border: solid 1px gray; */
+    border-left: solid 1px gray;
+    float: right;
+    width: 26%;
+    padding-left: 1.5%;
+}
+
+div#wrap > section#sidebar > nav > ul > li{
+    /* line-height: 50px;   줄 간격  : 글자의 맨위에서 부터 길이를 잰다. 글자포함 50px */
+    /* 또는 */
+    /* line-height: 200%;   줄간격 : 200%는 글자높이의 2배라는 것이며, 글자의 맨위에서부터 길이를 잰다. */
+    /* 또는 */
+    line-height: 2;      /* 줄간격 : 2는 글자높이의 2배라는 것이며, 글자의 맨위에서부터 길이를 잰다. */
+}
+/* li:nth-child(?)는 ?번째의 리스트에 적용 */
+/* div#wrap > section#sidebar > nav > ul > li:nth-child(1){
+    border: solid 3px green;
+} 
+또는 
+div#wrap > section#sidebar > nav > ul > li:first-child{
+    border: solid 3px green;
+}
+는 둘다 li의 첫번째를 지칭. */
+
+/* div#wrap > section#sidebar > nav > ul > li:nth-child(5){
+    border: solid 0px purple;
+} */
+
+/*
+마지막 list를 지칭.  
+div#wrap > section#sidebar > nav > ul > li:last-child{
+    border: solid 2px green; 
+} */
+
+div#wrap > section#sidebar > nav > ul > li:nth-child(5) > ul > li {
+    line-height: 1.3;
+    border: solid 0px purple;
+}
+
+div#wrap footer#page_footer{
+    border: solid 0px red;
+    /* background-color: #ccc; */
+    clear: both;
+    /* float을 해제하여, 페이지 하단에 안착시킴. */
+    text-align: center;
+    margin-bottom: 5%;
+    padding: 1.8% 0;
+}
+
+div#wrap footer#page_footer > p{
+    font-size: 15pt;
+}
+
+div#wrap > section#posts p{
+    border: solid 0px green;
+    font-size: 14pt;
+    line-height: 1.2;
+    margin-bottom: 3%;
+}
+
+div#container{
+    font-size: 20pt;
+    width: 50%;
+    border: solid 0px red;
+    text-align: center;
+    margin: 5% auto;
+}
+
+div#container > div{
+    font-size: 40pt;
+    margin-bottom: 5%;
 }
