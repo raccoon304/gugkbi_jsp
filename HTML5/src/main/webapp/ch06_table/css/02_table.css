@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+div#container{
+    border: solid 0px red;
+    width: 40%;
+    margin: 5% auto;
+}
+
+div#container > table{
+    border: solid 0px gold;
+    width: 100%;
+    /* table 태그는 width 를 설정하지 않으면 그 기본 width 크기는 내용물 만큼 잡힌다. */
+
+    border-collapse: collapse;
+    /* 위 태그가 없으면 테이블 border가 조금씩 띄어져있음. */
+
+    margin-top: 5%;
+
+}
+
+div#container > table th, 
+div#container > table td{
+    border: solid 1px black;
+}
+
+div#container > table th{
+    background-color: #ccc;
+    height: 40px;
+}
+
+div#container > table td:first-child,
+div#container > table td:last-child{
+    text-align: center;
+}
+
+div#container > table > tbody > tr:nth-child(2) > td:nth-child(2){
+    text-align: center;
+}
+
+div#container > table > tbody > tr:nth-child(3) > td:nth-child(2),
+div#container > table > tbody > tr:nth-child(4) > td:nth-child(2){
+    text-align: right;
+}

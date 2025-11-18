@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table만들기 5 [ thead / tboby / tfoot / colspan]  </title>
+    <link rel="stylesheet" href="./css/05_table.css">
+</head>
+<body>
+    <div id="container">
+        <table>
+            <caption align="bottom"></caption>
+            <colgroup span="3" id="firstColgroup"></colgroup>
+            <!-- colgroup 또는 col 이라고 해도 무관하다.  -->
+            <!-- span 다음 나오는 숫자는 묶어줄 열의 갯수를 말함. -->
+            <!-- span="3"으로 첫번째 열 부터 세번째 열까지 그룹으로 묶겠다는 뜻. -->
+            <colgroup span="1" id="secondColgroup"></colgroup>
+            <!-- colgroup 또는 col 이라고 해도 무관하다.  -->
+            <!-- span 다음 나오는 숫자는 묶어줄 열의 갯수를 말함. -->
+            <!-- span="1"으로 네번째 열 부터 네번째 열까지 그룹으로 묶겠다는 뜻. -->
+            <thead>
+                <tr>
+                    <!-- th는 default로 가운데 정렬 -->
+                    <th width = "50%">제품이름과 설명</th>
+                    <th width = "20%">개당 가격</th>
+                    <th width = "15%">박스당 개수</th>
+                    <th>총가격</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <!-- td는 default로 좌측 정렬 -->
+                    <td class="myalign_center">블라우스 - 붉은색 실크</td>
+                    <td class="myalign_right">20,000원</td>
+                    <td class="myalign_center">150</td>
+                    <td>3,000,000</td>
+                </tr>
+                <tr>
+                    <td class="myalign_right">바지 - 검은색원단</td>
+                    <td class="myalign_right">4,000원</td>
+                    <td>300</td>
+                    <td>120,000</td>
+                </tr>
+                <tr>
+                    <td class="myalign_center">새우깡</td>
+                    <td class="myalign_right">3,000원</td>
+                    <td class="myalign_center">500</td>
+                    <td>150,000</td>
+                </tr>
+                <tr>
+                    <td>감자깡</td>
+                    <td>5,000원</td>
+                    <td>200</td>
+                    <td>100,000</td>
+                </tr>
+                <tr>
+                    <td class="myalign_top">양파링</td>
+                    <td class="myalign_center">8000원</td>
+                    <td class="myalign_bottom myalign_right">300</td>
+                    <td>240,000</td>
+                </tr>
+            </tbody>
+            <!-- 
+              thead 태그와 tfoot 태그는 테이블에서 오로지 1번만 사용한다.
+               thead 태그는 표의 타이틀 용도로 쓰이고,
+               tfoot 태그는 표의 마지막에 요약데이터나 총계등을 보여줄 때 사용한다. 
+               tbody 태그는 표의 데이터를 표시하는 용도로 쓰인다.
+          -->
+            <tfoot>
+                <tr>
+                    <!-- colspan 은 열병합인데 colspan="2" 은 2개열을 하나로 병합한다. -->
+                    <td colspan="2">총박스 개수 및 총금액</td>
+                    <td>1,150</td>
+                    <td>6,700,000원</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</body>
+</html>

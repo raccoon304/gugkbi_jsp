@@ -1,0 +1,70 @@
+@charset "UTF-8";
+
+
+div#container{
+    border: solid 0px red;
+    width: 40%;
+    margin: 5% auto;
+}
+
+div#container > table{
+    border: solid 0px gold;
+    width: 100%;
+    /* table 태그는 width 를 설정하지 않으면 그 기본 width 크기는 내용물 만큼 잡힌다. */
+
+    border-collapse: collapse;
+    /* 위 태그가 없으면 테이블 border가 조금씩 띄어져있음. */
+}
+
+div#container > table th, 
+div#container > table td{
+    border: solid 1px gold;
+}
+
+div#container > table th{
+    background-color: #ccc;
+    height: 40px;
+}
+
+div#container > table td{
+    height: 30px;
+}
+
+.myalign_center{
+    text-align: center;
+    /* 정렬기준이 가로이다. text-align 의 기본은 left 이다. */
+}
+
+.myalign_right{
+    text-align: right;
+    /* 정렬기준이 가로이다. text-align 의 기본은 left 이다. */
+}
+
+.myalign_top{
+    vertical-align: top; 
+    /*  정렬기준이 세로이다.  vertical-align 의 기본은 middle이다. */
+}
+
+.myalign_bottom{
+    vertical-align: bottom; 
+    /*  정렬기준이 세로이다.  vertical-align 의 기본은 middle이다. */
+}
+
+div#container > table > tbody > tr:nth-child(4),
+div#container > table > tbody > tr:nth-child(5){
+    height: 100px;
+}
+
+div#container > table > tbody > tr:nth-child(4) > td:nth-child(1){
+    vertical-align: top;
+}
+
+div#container > table > tbody > tr:nth-child(4) > td:nth-child(2){
+    text-align: center;
+}
+
+div#container > table > tbody > tr:nth-child(4) > td:nth-child(3){
+    vertical-align: bottom;
+    text-align: right;
+}
+

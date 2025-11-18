@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+div#container{
+    border: solid 0px red;
+    width: 100%;
+    margin: 2% auto;
+}
+
+
+div#container h1{
+    text-align: center;
+}
+
+    
+
+
+div.title{
+    border: solid 1px yellow;
+    text-align: center;
+    font-size: 16pt
+}
+
+div#container > div#first_div >div:nth-child(2){
+    border: solid 0px green;
+    float: left;
+}
+
+div#container > div#first_div >div:nth-child(3){
+    border: solid 0px green;
+    float: right;
+}
+
+div#container > div#second_div >div:nth-child(1) {
+    float: left;
+    border: solid 2px red;
+}
+
+div#container > div#second_div >div:nth-child(2) {
+    float: right;
+    border: solid 2px blue;
+}
+
+div#container > div#third_div{
+    border: solid 3px blue;
+}
+
+div#container > div#third_div > div {
+    border: solid 30px black;
+}
+
+
+
+div#container > div#fourth_div >div:nth-child(1) {
+    float: left;
+    border: solid 2px red;
+}
+
+
