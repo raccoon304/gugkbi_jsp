@@ -1,0 +1,161 @@
+@charset "UTF-8";
+
+*{
+    font-family: Arial, "MS Trebuchet", sans-serif;
+}
+
+body{
+    border: solid 0px gray;
+    word-break: break-all;
+    margin: 0;
+    padding: 0;
+}
+
+body > div#wrap {
+    border: solid 0px blue;
+    width: 70%;
+    margin: 0 auto;
+}
+
+body > div#wrap > header#page_header > nav{
+    margin-top: 3%;
+}
+
+body > div#wrap > header#page_header > nav > ul,
+div#wrap footer#page_footer ul{
+    border: solid 0px red;
+    list-style-type: none;
+    padding: 0;
+    font-size: 13pt;
+}
+
+body > div#wrap > header#page_header > nav > ul{
+    display: flex;
+}
+
+body > div#wrap > header#page_header > nav > ul > li{
+    border: solid 0px gray;
+    display: inline-block;
+    width: 12%;
+    /* margin: 0 2% 0 0; */
+}
+
+body > div#wrap > header#page_header > nav > ul > li:last-child {
+    margin-left: auto;
+    width: auto;
+}
+
+div#wrap footer#page_footer ul > li{
+    border: solid 0px gray;
+    display: inline-block;
+    width: 10%;
+    margin: 0 2% 0 0;
+    font-size: 13pt;
+}
+
+a {
+    text-decoration: none;
+}
+
+body > div#wrap > header#page_header > nav > ul > li a:visited{
+    color: pink;
+}
+
+body > div#wrap > header#page_header > nav > ul > li a:hover{
+    background-color: red;
+    color: yellow;
+    font-weight: bolder;
+}
+
+div#wrap > hr{
+    border: solid 3px blue;
+    margin-top: 2%;
+}
+
+#content{
+    display: flex;
+    gap: 2%;           
+}
+
+div#wrap > #content > section#posts{
+    margin-top: 4%;
+    border: solid 1px gray;
+    border-radius: 1%;
+    flex: 0 0 72%;    
+}
+
+div#wrap > #content > section#sidebar{
+    margin-top: 4%;
+    border: solid 1px gray;
+    text-align: center;
+    
+    flex: 0 0 26%;    
+    border-radius: 1%;
+}
+
+div#wrap > #content > section#sidebar > nav > ul{
+    list-style: none;
+}
+
+div#wrap > #content > section#sidebar > nav > ul > li{
+    line-height: 2;
+    list-style-position: inside;
+}
+
+div#wrap > #content > section#sidebar > nav > ul > li:nth-child(5) > ul > li {
+    line-height: 1.3;
+    border: solid 0px purple;
+}
+
+div#wrap footer#page_footer{
+    border: solid 0px red;
+    text-align: center;
+    margin-bottom: 5%;
+    padding: 1.8% 0;
+}
+
+div#wrap footer#page_footer > p{
+    font-size: 15pt;
+}
+
+div#wrap > #content > section#posts p{
+    border: solid 0px green;
+    font-size: 14pt;
+    line-height: 1.2;
+    margin-bottom: 3%;
+}
+
+#posts article .flex{
+    max-height: 350px; 
+    overflow: auto;      
+}
+
+div#wrap > #content > section#posts aside{
+    border: solid 0px gray;
+    float: right;          
+    width: 35%;
+    color: #B30059;
+    font-size: 18pt;
+    font-weight: bolder;
+    line-height: 180%;
+    margin-left: 3%;        
+    margin-top: 0;
+}
+
+
+
+
+div#container{
+    font-size: 20pt;
+    width: 50%;
+    border: solid 0px red;
+    text-align: center;
+    margin: 5% auto;
+}
+
+div#container > div{
+    font-size: 40pt;
+    margin-bottom: 5%;
+}
+
+

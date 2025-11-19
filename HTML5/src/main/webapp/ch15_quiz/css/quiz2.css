@@ -1,0 +1,102 @@
+@charset "UTF-8";
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    border: solid 0px gray;
+    word-break: break-all;
+    margin: 0;
+    padding: 0;
+}
+
+div#container{
+    border: solid 0px navy;
+    width: 80%;
+    margin: 2% auto;
+}
+
+div#container > div#header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+}
+
+div#container > div#header > .login{
+    border: solid 0px blue;
+    flex: 0 0 20%;
+}
+
+div#container > div#header .login ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+div#container > div#header .login li{
+    margin-bottom: 5px;
+}
+
+div#container > div#header > .logo{
+    border: solid 0px red;
+    flex: 0 0 77%;
+}
+
+div#container > div#asd{
+    border: solid 0px orange;
+    margin-top: 20px;
+    display: flex;
+}
+
+div#container div#side{
+    border: solid 0px green;
+    flex: 0 0 17%;
+    background-color: #888;
+    display: flex;
+    padding: 3% 0 0 5%;
+
+}
+
+div#container div#side ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+div#container div#side li{
+    color: white;
+    font-size: 20px;
+    line-height: 2.2;
+}
+
+div#container div#contents{
+    border: solid 0px orange;
+    flex: 1;
+    background-color: #222;
+    margin-left: 5%;
+    padding: 10px 15px;
+    height: 400px;
+    overflow: auto;
+    color: #fff;
+}
+
+div#container > div#footer{
+    border: solid 0px purple;
+    background-color: #ddd;
+    height: 100px;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div#container > div#footer > div{
+    text-align: center;
+}
+
+#header > div.login > form > div{
+    margin-left: 26%;
+}
+
+#header > div.login > form > div > input[value="취소"]{
+    margin-left: 5%;
+}

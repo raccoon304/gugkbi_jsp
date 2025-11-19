@@ -1,0 +1,31 @@
+body {
+    border: solid 1px gray;
+    width: 80%;
+    margin: 0 auto;
+}
+
+div#container {
+    border: solid 1px red;
+    width: 80%;
+    margin: 0 auto;
+}
+
+div#container > div#parent, 
+div#container > div#other {
+    border: solid 2px green;
+    margin: 10px;
+}
+
+div#container > div#parent{
+    width: 50%;
+    background-color: #ffcccc;
+}
+
+div#container div.me{
+    position: static; /* position을 생략하면, 기본이 static으로 위치를 찍어줄 수 없다.  */
+    top:200px;
+    left: 200px;
+    background-color: yellow;
+    /*  position: static; 이고 width를 정해주지 않으면 width는 해당 태그의 부모
+    태그의 width는 해당 태그의 부모 태그의 width 크기를 따라간다.  */
+}
