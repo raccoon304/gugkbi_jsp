@@ -1,0 +1,154 @@
+@charset "UTF-8";
+
+div#container {
+    border: solid 0px green;
+    width: 70%;
+    margin: 9% auto; /* 중앙 정렬한다. */
+}
+
+
+div#box {
+    border: solid 1px gray;
+    width: 900px;   
+    height: 500px;
+    background-color: lightgoldenrodyellow;
+    padding-left: 5%;
+}
+
+div#head > div {
+    display: flex;
+    align-items: center;
+}
+
+div#head > div > div:first-child {
+    margin-left: 30%;
+}
+
+div#head > div > div:last-child {
+    margin-left: 10%;
+    display: flex;
+    align-items: center;     
+}
+
+#timer {
+    color: blue;      
+    font-weight: bold;
+    padding-left: 20px;
+}
+
+div#body div button{
+    width: 50px;
+    height: 50px;
+    background-color: #646464;
+    color: white;
+    font-size: 20pt;
+    border-radius: 50%;
+}
+
+div#body div button:active { 
+    background-color: #3e3e3e;
+}
+
+div#body div button:disabled { 
+    background-color: #cbcdca;
+}
+
+
+div#footer {
+    display: flex;       
+    align-items: center;   
+    margin-top: 20px;     
+    justify-content: center;
+}
+
+
+div#footer > p {
+    border: solid 1px red;
+    margin: 0 0 0 10px;    
+    font-weight: bold;   
+}
+
+div#footer > button {
+    width: 70px;
+    height: 28px;
+    border: solid 1px red;
+    color: red;
+    border-radius: 15%; 
+}
+
+div#footer > button:hover {
+    background-color: yellow; 
+}
+
+#quiz4 ol {
+    list-style: decimal;    
+    padding-left: 20px;     
+    margin: 10px;
+}
+
+#quiz4 ol li {
+    display: list-item;     
+    float: left;           
+    margin: 0 20px;
+    border: solid 0px red;
+}
+
+#quiz4 img {
+    width: 90px;
+    height: 100px;
+    display: block;
+    border: solid 0 px blue;
+}
+
+#quiz4 ol li label {
+    display: inline-block;
+}
+
+#quiz4 div.ox {
+    clear: both;
+}
+
+div.ox {
+    font-weight: bold;
+}
+
+
+
+div#redbox{
+    display: none;       
+    margin: auto;
+    height: 200px;
+    width: 1100px; 
+    border: solid 3px red;
+}
+
+div#result_tbl {
+    border: 0px solid red;    
+    width: 1200px;             
+    margin: auto auto;      
+    padding: 15px 25px;      
+    box-sizing: border-box;  
+}
+
+div#result_tbl table {
+    border-collapse: collapse;
+    width: 100%;             
+    text-align: center;
+    font-size: 13px;
+    margin: 0;                 
+}
+
+div#result_tbl th,
+div#result_tbl td {
+    border: 1px solid black;
+    padding: 6px 10px;
+    font-weight: normal;
+}
+
+div#result_tbl tr:first-child th {
+    font-weight: bold;
+}
+
+div#result_tbl tr th:first-child {
+    font-weight: bold;
+}

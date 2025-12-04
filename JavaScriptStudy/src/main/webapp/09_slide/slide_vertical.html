@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>수직 슬라이드</title>
+
+    <link rel="stylesheet" href="./css/slide_vertical.css">
+    <script type="text/javascript" src="./js/slide_vertical.js"></script>
+
+</head>
+<body>
+    <div id="container">
+        <h2 style = "text-align: center;" >사진을 수직 슬라이드로 보기</h2>
+        
+        <div style="display: flex; ">
+            <div style="margin: auto 1% auto auto;">
+                <button type="button" id="previous">▲</button>
+            </div>
+            
+            <div id="slide">    <!-- 배치된 img들을 한개의 img만 보이게 하고 나머지는 가리기 위한 용도로 사용되는 태그 -->
+                <div id="images"><!-- div를 두개로 감싼건 img 이미지들을 좌우 배치할 태그로서 display는 flex로 함. -->
+                    <img src="./images/Koala.jpg">          <!-- img 들을 상하로 배치해야함으로 display는 block으로 한다. -->     
+                    <img src="./images/Lighthouse.jpg">
+                    <img src="./images/Penguins.jpg">
+                    <img src="./images/Tulips.jpg">
+                </div>
+            </div>
+            
+            <div style="margin: auto auto auto 1%;">
+                <button type="button" id="next">▼</button>
+            </div>
+        </div>
+        <h2 id="msg" style="text-align: center; color: red;"></h2>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+@charset "UTF-8";
+
+body{
+	padding: 20px;
+}
+
+div.display {
+	display: inline-block;
+	border: solid 1px gray;
+	width: 10%;
+	margin: 10px; 
+}
+
+div#fruitDisplay {
+	border: solid 1px blue;
+	width: 15%;
+	margin: 10px; 
+}
+
+hr {
+	border: solid 1px red;
+}
+
+/* ------------------------------------ */
+label.title {
+    display: inline-block;
+    color: blue; 
+ 	/* border: solid 1px red; */
+	width: 70px;
+	font-size: 11pt;
+	font-weight: bold;
+	width: 70px;
+
+}
+
+
+
+
+
+
+
+
+

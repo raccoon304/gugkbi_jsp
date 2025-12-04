@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+div#view {
+ /* border: solid 1px red; */
+    width: 40%;
+    margin: 3% auto;
+}
+
+div#view > table#tbl {
+ /* border: solid 1px blue; */
+    width: 100%;
+    border-collapse: collapse;
+}
+
+div#view > table#tbl th,
+div#view > table#tbl td {
+    border: solid 1px gray;
+    padding: 2%;
+}
+
+div#view > table#tbl > thead > tr:first-child > th {
+    color: tomato;
+    font-size: 20pt;
+    border: none;
+}
+
+div#view > table#tbl > tbody > tr > td:first-child > img {
+    width: 30%;
+    cursor: pointer;
+}
+
+div#view > table#tbl > tbody > tr > td:nth-child(2) > ul > li {
+    line-height: 2;
+}
+
+div#view > table#tbl > tbody > tr > td:last-child > label {
+ /* border: solid 1px gray; */
+    margin-right: 5%;
+    text-decoration: underline;
+}
