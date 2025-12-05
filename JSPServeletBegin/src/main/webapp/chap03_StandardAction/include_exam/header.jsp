@@ -1,0 +1,90 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+    
+<%
+	String ctxPath = request.getContextPath();
+	//	/JSPServeletBegin
+%>
+    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>부트스트랩 페이지 링크 예제 </title>
+
+    <!-- Bootstrap CSS -->
+<!--  
+    <link rel="stylesheet" href="<%= request.getContextPath()%>/bootstrap-4.6.2-dist/css/bootstrap.min.css" type="text/css">
+    또는
+    <link rel="stylesheet" href="<%=ctxPath%>/bootstrap-4.6.2-dist/css/bootstrap.min.css" type="text/css">
+   	또는
+-->
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/bootstrap-4.6.2-dist/css/bootstrap.min.css" type="text/css">
+
+    <!-- Font Awesome 7 Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+
+    <!-- 직접만든 CSS -->
+    <link rel="stylesheet" href="<%= request.getContextPath()%>/chap03_StandardAction/include_exam/css/mycss.css"> 
+
+</head>
+<body>
+    <div class="container">
+        <!-- *********상단 네비게이션 시작********* -->
+        <nav class="navbar navbar-expand-lg bg-light navbar-light sticky-top">
+        <!-- 표준 탐색 모음은 .navbar 클래스를 사용하여 생성되고 반응형 축소 클래스(.navbar-expand-xl|lg|md|sm)가 뒤따릅니다. -->   
+        <!-- Large(lg) ==> 992px 이상  1200px미만. navbar-expand-lg 은 width 가 991px 되어지는 순간 nav 이 축소되어진다. -->
+
+		  <!-- Brand -->
+		  <a class="navbar-brand" href="#"><i class="fa-brands fa-windows fa-2x"></i></a>
+		
+            <!-- 아코디언같은 Navigation Bar 만들기 -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		        <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+
+
+                <!-- Links -->
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link my_menufont_size" href="./index.jsp">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link my_menufont_size" href="./board.jsp">게시판</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link my_menufont_size" href="./login.jsp">로그인</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link my_menufont_size" href="./register.jsp">회원가입</a>
+                    </li>
+
+
+                    <!-- Dropdown -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle my_menufont_size " href="#" id="navbardrop" data-toggle="dropdown">
+                            Dropdown
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbardrop">
+                            <a class="dropdown-item" href="#">Link 1</a>
+                            <a class="dropdown-item" href="#">Link 2</a>
+                            <a class="dropdown-item" href="#">Link 3</a>
+                            <div class="dropdown-divider"></div><!-- 선긋기 -->
+                            <a class="dropdown-item" href="#">Link 4</a>
+                            <a class="dropdown-item" href="#">Link 5</a>
+                        </div>
+                    </li>
+		        </ul>
+            </div>
+		</nav>
+        <!-- 상단 네비게이션 끝 -->
+    </div>
+<script src="<%= request.getContextPath()%>/js/jquery-3.7.1.min.js" type="text/javascript"></script>
+<script src="<%= request.getContextPath()%>/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js" type="text/javascript"></script> 
+
+</body>
+</html>
