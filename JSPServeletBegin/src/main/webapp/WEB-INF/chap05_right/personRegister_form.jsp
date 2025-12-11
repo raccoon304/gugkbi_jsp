@@ -40,7 +40,7 @@
 			<div class="row">
 				<label class="col-md-4" for="name">성명</label>
 				<div class="col-md-8 form-group">
-					<input type="text" class="form-control" name="name" id="name" maxlength="20" autofocus/>
+					<input type="text" class="form-control" name="name" id="name" maxlength="20" autofocus autocomplete="off"/>
 				</div>
 			
 				<label class="col-md-4">학력</label>

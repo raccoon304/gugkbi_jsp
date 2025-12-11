@@ -49,3 +49,18 @@ select seq, name, school, color, food
 from tbl_person_interest
 order by seq;
 
+
+select seq, name, school, color, food
+     , to_char(registerday, 'yyyy-mm-dd hh24:mi:ss') AS registerday
+     , NVL(to_char(updateday, 'yyyy-mm-dd hh24:mi:ss'), ' ') AS updateday
+from tbl_person_interest
+order by seq;
+
+
+select seq, name, school, color, food
+     , to_char(registerday, 'yyyy-mm-dd hh24:mi:ss') AS registerday
+     , NVL(to_char(updateday, 'yyyy-mm-dd hh24:mi:ss'), ' ') AS updateday
+from tbl_person_interest
+where seq = to_number('4asd');
+--ORA-01722: 수치가 부적합합니다
+
