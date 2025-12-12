@@ -113,12 +113,16 @@
 					</div>
 					
 					<div class="col-md-3 text-center">
-						<button type="button" class="btn btn-danger text-center" onclick="">
+						<button type="button" class="btn btn-danger text-center" onclick="deletePerson('${psdto.seq}','${psdto.name}')">
+																					<!-- 지금은 숫자라 문제가 없지만. 문자인경우에는 홑따움표 혹은 쌍따움표를 해주어야함. -->
+																					<!-- 그냥 숫자건 문자건 모든 데이터를 '' 혹은 "" 처리하는게 좋음.  -->
 							삭제하기
 						</button>
 					</div>
 					<div class="col-md-3 text-center">
-						<button type="button" class="btn btn-primary text-center" onclick="">
+						<button type="button" class="btn btn-primary text-center" onclick="updatePerson('${psdto.seq}')">
+																					<!-- 지금은 숫자라 문제가 없지만. 문자인경우에는 홑따움표 혹은 쌍따움표를 해주어야함. -->
+																					<!-- 그냥 숫자건 문자건 모든 데이터를 '' 혹은 "" 처리하는게 좋음.  -->
 							내정보 수정하기
 						</button>
 					</div>
@@ -127,5 +131,9 @@
 			</div>
 		</div>
 	</div>
+	<%-- !!! POST 방식을 통해 회원의 정보를 삭제 하든지 또는 회원의 정보를 수정하기 위해 화면에 보이지 않는 form 태그를 만든다. !!! --%> 
+	<form name="update_delete_frm">
+		<input type="hidden" name="seq"/>
+	</form>
 </body>
 </html>

@@ -114,8 +114,14 @@
 			<div class="text-center my-5">
 				<a href="personRegister.do" class="btn btn-info">개인성향 입력하기</a>	
 			</div>
-		
 		</div>
 	</div>
+	
+	<!-- 특정 회원의 정보를 보기 위하여 전송방식을 POST 방식으로 사용하기 위해 폼 태그를 만들어준다.  -->
+	<form name="seqFrm">
+		<input type="hidden" name="seq"/>
+	</form>
+	
+	
 </body>
 </html>

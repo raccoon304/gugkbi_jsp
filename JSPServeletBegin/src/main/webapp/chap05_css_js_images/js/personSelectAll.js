@@ -22,10 +22,19 @@ $(function(){
 		
 		// !!! 암기 !!! //
 		// 자바스크립트에서 URL 페이지 이동은 location.href="이동하고자하는 URL주소"; 이다.
-		location.href = "personDetail.do?seq="+seq;
 		
+/*		location.href = "personDetail.do?seq="+seq; // GET 방식 
+*/		
 		
 		//POST 방식
+		//POST 방식으로 하려면 폼 태그속에 전달해야할 데이터를 넣고 보내야 한다. 
+		const frm = document.seqFrm;  // document.(태그의 name)을 하게되면 태그의 name 을 통해서 지정하게됨. 즉, personSelectAll.jsp내의
+									  // <form name="seqFrm"> 해당 폼 태그를 잡게된다.  
+		//frm.seq	// 이와 같이 <form name="seqFrm">에서 seq라는 name 을 가진 태그를 잡는다. 즉, <input type="text" name="seq"/> 해당 input태그를 잡게된다.
+		frm.seq.value = seq;
+		frm.action = "personDetail.do";
+		frm.method = "post";
+		frm.submit();
 	});
 		 	
 });//EoP function()

@@ -64,3 +64,5 @@ from tbl_person_interest
 where seq = to_number('4asd');
 --ORA-01722: 수치가 부적합합니다
 
+delete from tbl_person_interest
+where seq = 3;

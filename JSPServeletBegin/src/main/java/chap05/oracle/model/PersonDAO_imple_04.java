@@ -153,4 +153,57 @@ public class PersonDAO_imple_04 implements PersonDAO_03 {
 		}
 		return psdto;
 	}
+
+	/* tbl_person_interest테이블에 저장되어진 특정 1개 행을 수정 update 해주는 메서드 */
+	@Override
+	public int updatePerson(PersonDTO_02 psdto) throws SQLException {
+		
+		int n = 0;
+		
+		try {
+			String sql = " update tbl_person_interest set name=? , school=?, color=?, food=?, updateday=sysdate"
+					+ " where seq = ? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, psdto.getName());
+			pstmt.setString(2, psdto.getSchool());
+			pstmt.setString(3, psdto.getColor());
+			
+			if(psdto.getFood() != null) {
+				pstmt.setString(4, String.join(",", psdto.getFood()));
+			}
+			else {
+				pstmt.setString(4, null);
+			}
+			
+			pstmt.setInt(5, psdto.getSeq());
+			
+			n = pstmt.executeUpdate();
+			
+			
+		} catch (Exception e) {
+			close();
+		}
+		return n;
+	}// EoP public int updatePerson(PersonDTO_02 psdto) throws SQLException
+
+
+	@Override
+	public int deletePerson(PersonDTO_02 dto) throws SQLException {
+		int n = 0;
+		
+		try {
+			String sql = " delete from tbl_person_interest "
+					+ " where seq = ? ";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, dto.getSeq());
+			
+			n = pstmt.executeUpdate();
+			
+		} catch (Exception e) {
+			close();
+		}
+		return n;
+	}
 }

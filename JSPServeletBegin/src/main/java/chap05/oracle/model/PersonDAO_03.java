@@ -14,5 +14,10 @@ public interface PersonDAO_03 {
 
 	// tbl_person_interest테이블에 저장되어진 특정 1개 행만 읽어오는 select 추상메서드(미완성 메서드)
 	PersonDTO_02 selectOne(String seq) throws SQLException;
+
+	// tbl_person_interest테이블에 저장되어진 특정 1개 행을 수정 update 해주는 추상메서드(미완성 메서드)
+	int updatePerson(PersonDTO_02 psdto) throws SQLException;
+
+	int deletePerson(PersonDTO_02 dto) throws SQLException;
 	
 }
