@@ -13,13 +13,14 @@
     <fullyQualifiedTypeName name="java.net.ConnectException"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
     <fullyQualifiedTypeName name="java.sql.ResultSet"/>
-    <fullyQualifiedTypeName name="chap05.oracle.model.PersonDAO_imple_04"/>
-    <fullyQualifiedTypeName name="chap05.oracle.model.PersonDAO_03"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="java.util.ArrayList"/>
-    <fullyQualifiedTypeName name="java.lang.Override"/>
-    <fullyQualifiedTypeName name="chap05.oracle.domain.PersonDTO_02"/>
     <fullyQualifiedTypeName name="java.sql.SQLException"/>
-    <fullyQualifiedTypeName name="jakarta.servlet.RequestDispatcher"/>
     <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
+    <fullyQualifiedTypeName name="chap05.oracle.model.PersonDAO_imple_04"/>
+    <fullyQualifiedTypeName name="chap05.oracle.model.PersonDAO_03"/>
+    <fullyQualifiedTypeName name="chap05.oracle.domain.PersonDTO_02"/>
+    <fullyQualifiedTypeName name="jakarta.servlet.RequestDispatcher"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="java.lang.Integer"/>
 </qualifiedTypeNameHistroy>
