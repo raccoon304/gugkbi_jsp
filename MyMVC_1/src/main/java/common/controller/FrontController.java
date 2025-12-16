@@ -21,7 +21,7 @@ import java.util.Properties;
 
 @WebServlet(
 		description = "사용자가 웹에서 *.up을 했을 경우 이 서블릿이 응답을 해주도록 한다.", 
-		urlPatterns = { "*.up" }, 
+		urlPatterns = { "*.up" },  
 		initParams = { 
 				@WebInitParam(name = "propertyConfig", value = "C:/NCS/workspace_jsp/MyMVC_1/src/main/webapp/WEB-INF/Command.properties", description = "*.up 에 대한 클래스의 매핑파일")
 		})

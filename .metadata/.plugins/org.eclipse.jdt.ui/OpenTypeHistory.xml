@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
-    <typeInfo handle="=JSPServeletBegin/src\/main\/java&lt;chap05.oracle.model{PersonDAO_03.java[PersonDAO_03" modifiers="513" timestamp="1765430992600"/>
+    <typeInfo handle="=JSPServeletBegin/src\/main\/java&lt;chap05.oracle.model{PersonDAO_03.java[PersonDAO_03" modifiers="513" timestamp="1765518303217"/>
+    <typeInfo handle="=MyMVC_1/src\/main\/java&lt;common.controller{InterCommand.java[InterCommand" modifiers="513" timestamp="1765847305502"/>
+    <typeInfo handle="=MyMVC_1/src\/main\/java&lt;myshop.model{ProductDAO.java[ProductDAO" modifiers="513" timestamp="1765784913280"/>
+    <typeInfo handle="=MyMVC_1/src\/main\/java&lt;common.controller{AbstractController.java[AbstractController" modifiers="1025" timestamp="1765775299800"/>
+    <typeInfo handle="=MyMVC_1/src\/main\/java&lt;member.model{MemberDAO.java[MemberDAO" modifiers="513" timestamp="1765870301904"/>
+    <typeInfo handle="=MyMVC_1/C:\/SW\/jdk-17.0.0.1\/lib\/jrt-fs.jar`java.base=/javadoc_location=/https:\/\/docs.oracle.com\/en\/java\/javase\/17\/docs\/api\/=/=/module=/true=/&lt;java.lang.reflect(Member.class[Member" modifiers="1537" timestamp="1715191915000"/>
 </typeInfoHistroy>

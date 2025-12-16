@@ -29,6 +29,10 @@
 <script type="text/javascript" src="<%= ctxPath%>/bootstrap-4.6.2-dist/js/bootstrap.bundle.min.js" ></script> 
 <script type="text/javascript" src="<%= ctxPath%>/js/template/template.js"></script>
 
+<%-- 직접 만든 JS --%>
+<link rel="stylesheet" type="text/css" href="<%= ctxPath%>/jquery-ui-1.13.1.custom/jquery-ui.min.css" />
+<script type="text/javascript" src="<%= ctxPath%>/jquery-ui-1.13.1.custom/jquery-ui.min.js"></script>
+
 </head>
 <body>
 
@@ -52,17 +56,20 @@
               <a class="nav-link menufont_size" href="<%= ctxPath %>/member/memberRegister.up">회원가입</a>
            </li>
           <li class="nav-item">
-             <a class="nav-link menufont_size" href="<%= ctxPath %>/member/memberList.up">회원목록</a>
+             <a class="nav-link menufont_size" href="<%= ctxPath %>/shop/mallHomeMore.up">쇼핑몰홈[더보기]</a>
+          </li>
+          <li class="nav-item">
+             <a class="nav-link menufont_size" href="<%= ctxPath %>/shop/mallHomeScroll.up">쇼핑몰홈[스크롤]</a>
           </li>
           <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle menufont_size text-primary" href="#" id="navbarDropdown" data-toggle="dropdown"> 
-                 Dropdown                                <%-- .text-primary 는 글자색으로 파랑색임 --%>  
+                 관리자전용                             <%-- .text-primary 는 글자색으로 파랑색임 --%>  
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                 <a class="dropdown-item text-primary" href="#">Action</a>
-                 <a class="dropdown-item text-primary" href="#">Another action</a>
+                 <a class="dropdown-item text-primary" href="<%= ctxPath %>/member/memberList.up">회원목록</a>
+                 <a class="dropdown-item text-primary" href="<%= ctxPath %>/shop/admin/productRegister.up">제품등록</a>
                  <div class="dropdown-divider"></div>
-                 <a class="dropdown-item text-primary" href="#">Something else here</a>
+                 <a class="dropdown-item text-primary" href="<%= ctxPath %>/shop/orederList.up">전체주문내역</a>
               </div>
            </li>
         </ul>
@@ -87,5 +94,3 @@
          
          
          
-</body>
-</html>

@@ -72,7 +72,7 @@ public class ProductDAO_imple implements ProductDAO {
 			close();
 		}
 		
-		return null;
+		return imgList;
 	}// EoP public List<ImageDTO> imageSelectAll() throws SQLException 
 
 }
