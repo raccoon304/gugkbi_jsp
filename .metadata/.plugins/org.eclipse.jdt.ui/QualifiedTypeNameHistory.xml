@@ -37,6 +37,14 @@
     <fullyQualifiedTypeName name="myshop.model.ProductDAO"/>
     <fullyQualifiedTypeName name="index.controller.IndexController"/>
     <fullyQualifiedTypeName name="myshop.model.ProductDAO_imple"/>
+    <fullyQualifiedTypeName name="com.sun.crypto.provider.GaloisCounterMode.AES256"/>
+    <fullyQualifiedTypeName name="util.security.SecretMyKey"/>
+    <fullyQualifiedTypeName name="util.security.Sha256"/>
+    <fullyQualifiedTypeName name="util.security.AES256"/>
     <fullyQualifiedTypeName name="member.domain.MemberDTO"/>
+    <fullyQualifiedTypeName name="java.io.Console"/>
     <fullyQualifiedTypeName name="java.sql.SQLException"/>
+    <fullyQualifiedTypeName name="org.json.JSONObject"/>
+    <fullyQualifiedTypeName name="member.model.MemberDAO_imple"/>
+    <fullyQualifiedTypeName name="member.model.MemberDAO"/>
 </qualifiedTypeNameHistroy>

@@ -9,6 +9,10 @@
 
 let b_zipcodeSearch_click = false;  // 우편번호찾기를 클릭했는지 확인하기 위한 용도 
 
+let b_idcheck_click = false;  // 아이디 중복확인을 클릭했는지 클릭하지 않았는지 여부를 알아오기 위한 용도 
+
+let b_email_click = false;  // 이메일 중복확인을 클릭했는지 클릭하지 않았는지 여부를 알아오기 위한 용도 
+
 
 
 $(()=>{
@@ -113,7 +117,7 @@ $(()=>{
 // -----------------------------------------------------------------------------------------
 
 	$('input#hp2').blur((e)=>{// 이메일이 정규표현식 검사 
-		const regExp_hp2 = /^[1-9][0-9]{3}$/; 
+		const regExp_hp2 = /^[0-9]{4}$/; 
 		//연락처 국번( 숫자 4자리인데 첫번째 숫자는 1-9 이고 나머지는 0-9) 정규표현식 객체 생성
 		
 		const bool = regExp_hp2.test($(e.target).val());
@@ -132,7 +136,7 @@ $(()=>{
 // -----------------------------------------------------------------------------------------
 
 	$('input#hp3').blur((e)=>{// 이메일이 정규표현식 검사 
-		const regExp_hp3 = /^[1-9][0-9]{3}$/; 
+		const regExp_hp3 = /^[0-9]{4}$/; 
 		//연락처 국번( 숫자 4자리인데 첫번째 숫자는 1-9 이고 나머지는 0-9) 정규표현식 객체 생성
 		
 		const bool = regExp_hp3.test($(e.target).val());
@@ -321,6 +325,131 @@ $(()=>{
        // To의 초기값을 3일후로 설정
        $('input#toDate').datepicker('setDate', '+3D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, +1M:한달후, +1Y:일년후)
     });   
+	
+	//===== 생년월일에 키보드로 값을 직접 입력할 경우 입력 못하도록 ===== //
+	$('input#datepicker').bind("keyup", function(e){
+		$(e.target).val("").next().show();
+	});
+	// ===== 생년월일에 마우스로 값을 변경하는 경우 ===== //
+	$('input#datepicker').bind("change", function(e){
+		if($(e.target).val() != ""){
+			$(e.target).next().hide();
+		}
+	});
+	
+	
+// =======================================================================================================================
+	// --- 아이디중복확인을 클릭했을 때 이벤트 처리하기 시작 ---
+	$('img#idcheck').click(function(){
+		b_idcheck_click = true;
+		
+		// 입력하고자 하는 아이디가 데이터베이스 테이블에 존재하는지, 존재하지 않는지 알아와야 한다. 
+		/*
+		   Ajax (Asynchronous JavaScript and XML)란?                         
+		  ==> 이름만 보면 알 수 있듯이 '비동기 방식의 자바스크립트와 XML' 로서 Asynchronous JavaScript + XML 인 것이다.
+		      한마디로 말하면, Ajax 란? Client 와 Server 간에 XML 데이터를 JavaScript 를 사용하여 비동기 통신으로 주고 받는 기술이다.
+		      하지만 요즘에는 데이터 전송을 위한 데이터 포맷방법으로 XML 을 사용하기 보다는 JSON(Javascript Standard Object Notation) 을 더 많이 사용한다. 
+		      참고로 HTML은 데이터 표현을 위한 포맷방법이다.                             
+		      그리고, 비동기식이란 어떤 하나의 웹페이지에서 여러가지 서로 다른 다양한 일처리가 개별적으로 발생한다는 뜻으로서,
+			  어떤 하나의 웹페이지에서 서버와 통신하는 그 일처리가 발생하는 동안 일처리가 마무리 되기전에 또 다른 작업을 할 수 있다는 의미이다.
+		*/
+		if( $('input#userid').val().trim() != ""){
+			// ==== jQuery Ajax를 사용한 첫번째 방법 ==== //
+			$.ajax({
+				url: "idDuplicateCheck.up" ,
+				data: {"userid" : $('input#userid').val()} ,
+				// data 속성은 http://localhost:9090/MyMVC/member/idDuplicateCheck.up 로 전송해야할 데이터를 말한다.
+				type: "post" , //Default 는 GET 방식으로 생략시 GET으로 전송된다. 
+				async: true ,
+				// async:true 가 비동기 방식을 말한다. async 을 생략하면 기본값이 비동기 방식인 async:true 이다.
+		        // async:false 가 동기 방식이다. 지도를 할때는 반드시 동기방식인 async:false 을 사용해야만 지도가 올바르게 나온다.
+				success:function(text){
+					//console.log(text)  // text는 view 페이지 전체를 찍어버림, (즉, 여기서는 jsonview.jsp에 html문구를 적거나 뭘 적어버리면 그게 전부 찍히게댐. )
+					// 결과 : {"isExists":true}
+					// console.log(typeof text); // 결과 : String 
+					
+					const json = JSON.parse(text);
+					// JSON.parse(text); 은 JSON.parse("{"isExists":true}"); 또는 JSON.parse("{"isExists":false}"); 와 같은 것인데
+					// 그 결과물은 {"isExists":true} 또는 {"isExists":false} 와 같은 문자열을 자바스크립트 객체로 변환해주는 것이다. 
+					// 조심할 것은 text 는 반드시 JSON 형식으로 되어진 문자열이어야 한다.
+					
+				/*
+					console.log("확인용 => " , json );
+					console.log("데이터타입 확인용 => " , typeof json );
+					// 확인용 => {isExists: true}
+					// 데이터타입 확인용 => object
+				*/	
+					if(json.isExists){
+						//입력한 userid가 이미 사용중인 경우.
+						$('span#idcheckResult').html($('input#userid').val() + "은 이미 사용중이므로 다른 아이디를 입력하세요.").css({"color":"red"});
+						$('input#userid').val("")
+					}
+					else{
+						//입력한 userid가 아직 사용되지 않은 경우.
+						$('span#idcheckResult').html($('input#userid').val() + "은 사용가능합니다.").css({"color":"green"});
+					}
+				},
+				error:function(request, status, error){
+					alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+		        }
+			});
+		}// EoP if( $('input#userid').val().trim() != ""){}
+	});	
+	// --- 아이디 중복확인을 클릭했을 때 이벤트 처리하기 끝 ---
+	
+	
+	
+	// --- 아이디값이 변경되면 가입하기 버튼 클릭시 아이디 중복확인을 클릭했는지 알아보기 위한 용도 초기화 시키기---
+	$('input#userid').bind("change", function(){
+		b_idcheck_click = false;
+	})
+	
+	// --- 이메일값이 변경되면 가입하기 버튼 클릭시 아이디 중복확인을 클릭했는지 알아보기 위한 용도 초기화 시키기---
+	$('input#email').bind("change", function(){
+		b_email_click = false;
+	})		
+	
+
+	
+	// ==== jQuery Ajax를 사용한 두번째 방법 ==== // 
+	// --- 이메일중복확인을 클릭했을 때 이벤트 처리하기 시작 ---
+	$('span#emailcheck').click(function(){
+		b_email_click = true;
+		if( $('input#email').val().trim() != ""){
+			$.ajax({
+				url: "emailDuplicateCheck.up" ,
+				data: {"email" : $('input#email').val()} ,  //http://localhost:9090/MyMVC/member/emailDuplicateCheck.up 로 전송해야할 데이터를 말한다.
+				type: "post" ,
+				dataType: "json", 	// json 형식으로 데이터를 요청 ==> 첫번째 방법처럼 형식변환을 거치지 않아도 바로 json 형태로 줌.
+									// Javascript Standard Object Notation.  dataType은 /MyMVC/member/emailDuplicateCheck.up 로 부터 실행되어진 결과물을 받아오는 데이터타입을 말한다. 
+						          	// 만약에 dataType:"xml" 으로 해주면 /MyMVC/member/emailDuplicateCheck.up 로 부터 받아오는 결과물은 xml 형식이어야 한다. 
+						          	// 만약에 dataType:"json" 으로 해주면 /MyMVC/member/emailDuplicateCheck.up 로 부터 받아오는 결과물은 json 형식이어야 한다.
+									
+				success:function(json){	
+					console.log("확인용 => " , json );
+					console.log("데이터타입 확인용 => " , typeof json );
+					// 확인용 => {isExists: true}
+					// 데이터타입 확인용 => object
+			
+					if(json.isExists){
+						//입력한 userid가 이미 사용중인 경우.
+						$('span#emailCheckResult').html($('input#email').val() + "은 이미 사용중이므로 다른 이메일을 입력하세요.").css({"color":"red"});
+						$('input#email').val("")
+					}
+					else{
+						//입력한 userid가 아직 사용되지 않은 경우.
+						$('span#emailCheckResult').html($('input#email').val() + "은 사용가능합니다.").css({"color":"green"});
+					}
+				},
+				error:function(request, status, error){
+					alert("code: "+request.status+"\n"+"message: "+request.responseText+"\n"+"error: "+error);
+		        }
+			});
+			// --- 이메일 중복확인을 클릭했을 때 이벤트 처리하기 끝 ---
+		}
+	});
+	
+// =======================================================================================================================
 });// EoP $(()=>{}
 
 
@@ -363,6 +492,24 @@ function goRegister(){
 			}
 	// *** 필수입력 사항에 모두 입력이 되었는지 검사하기 끝 *** // 
 	
+
+
+	// *** 아이디중복확인을 클릭했는지 알아보기 시작 *** //
+	if(!b_idcheck_click){// id중복확인을 클릭 안했을경우
+		alert("아이디 중복확인을 해야합니다.");
+		return;	//goRegister 함수를 종료한다. 
+	}
+	// *** 아이디중복확인을 클릭했는지 알아보기 끝 *** //
+
+	
+	
+	// *** 이메일중복확인을 클릭했는지 알아보기 시작 *** //
+	if(!b_email_click){// id중복확인을 클릭 안했을경우
+		alert("이메일 중복확인을 해야합니다.");
+		return;	//goRegister 함수를 종료한다. 
+	}
+	// *** 이메일 중복확인을 클릭했는지 알아보기 끝 *** //
+	
 	
 	// *** 우편변호찾기를 클릭했는지 알아보기 시작*** //
 	if(!b_zipcodeSearch_click){//우편번호찾기를 클릭하지 않은경우.
@@ -372,8 +519,7 @@ function goRegister(){
 	else{
 		if($('input#postcode').val().trim() == "" ||
 		   $('input#address').val().trim() == ""  ||
-		   $('input#detailAddress').val().trim() == "" ||
-		   $('input#extraAddress').val().trim() == "" ){
+		   $('input#detailAddress').val().trim() == ""){
 			alert("우편번호 및 주소를 입력해야 함.");
 			return;	//goRegister 함수를 종료한다. 
 		}
@@ -420,6 +566,15 @@ function goRegister(){
 
 }// EoP function goRegister()
 
+
+
+// 취소하기 버튼 클릭시 호출되는 함수 
+function goReset(){
+	$('span.error').hide();
+	$('span#idcheckResult').empty(); 	
+	// html("");과 다르게 empty는 span#idcheckResult 태그안을 비우라는 뜻임. 
+	$('span#emailCheckResult').empty(); 	
+}// EoP goReset()
 
 
 

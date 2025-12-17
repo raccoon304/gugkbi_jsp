@@ -81,15 +81,25 @@
 
     <div class="container-fluid" id="container" style="position: relative; top:90px; padding: 0.1% 2.5%;">
      
-     <div class="row">
-       <div class="col-md-3" id="sideinfo">
-         <div style="height: 200px; text-align: left; padding: 20px;">
-            2. 로그인/Tree/View
-         </div>
-         <div id="sidecontent" style="text-align: left; padding: 20px;"></div>
-       </div>
-       <div class="col-md-9" id="maininfo" align="center">
-         <div id="maincontent">
+    <div class="row">
+	    <div class="col-md-3" id="sideinfo">
+	     
+		     <%-- 유트브 넣기 header1.jsp 에만 있음 --%>
+		    <div class="row">
+				<div class="col-md-8 offset-md-2 mt-3 embed-responsive embed-responsive-16by9">
+				      <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/E0W5sJZ2d64" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+				</div>
+		    </div>
+	       
+	        <div style="height: 200px; text-align: left; padding: 20px;">
+	            <%-- ==== 로그인 처리하기 ==== --%>>
+	            <%@ include file="/WEB-INF/login/login_cookie.jsp" %>
+	            <%-- <%@ include file="/WEB-INF/login/login_localstorage.jsp" %> --%>
+	        </div>
+	        <div id="sidecontent" style="text-align: left; padding: 20px;"></div>
+        </div>
+        <div class="col-md-9" id="maininfo" align="center">
+        	<div id="maincontent">
          
          
          

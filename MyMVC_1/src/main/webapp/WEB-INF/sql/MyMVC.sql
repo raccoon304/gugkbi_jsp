@@ -103,3 +103,35 @@ create table tbl_member
 select *
 from tbl_member
 order by registerday desc;
+
+
+create table tbl_loginhistory
+(historyno   number
+,fk_userid   varchar2(40) not null  -- 회원아이디
+,logindate   date default sysdate not null -- 로그인되어진 접속날짜및시간
+,clientip    varchar2(20) not null
+,constraint  PK_tbl_loginhistory primary key(historyno)
+,constraint  FK_tbl_loginhistory_fk_userid foreign key(fk_userid) references tbl_member(userid)
+);
+-- Table TBL_LOGINHISTORY이(가) 생성되었습니다.
+
+create sequence seq_historyno
+start with 1
+increment by 1
+nomaxvalue
+nominvalue
+nocycle
+nocache;
+-- Sequence SEQ_HISTORYNO이(가) 생성되었습니다.
+
+
+select * 
+from tbl_loginhistory
+order by historyno desc;
+
+SELECT userid, name, coin, point, 
+    trunc( months_between(sysdate, lastpwdchangedate) ) AS pwdchangegap, 
+    registerday, idle, email, mobile, postcode, address, detailaddress, extraaddress  
+FROM tbl_member
+WHERE status = 1 AND userid = 'sonyd' and pwd = '18006e2ca1c2129392c66d87334bd2452c572058d406b4e85f43c1f72def10f5';
+    

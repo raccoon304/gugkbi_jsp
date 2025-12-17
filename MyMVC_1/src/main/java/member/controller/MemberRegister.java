@@ -1,6 +1,7 @@
 package member.controller;
 
 import java.io.Console;
+import java.sql.SQLException;
 
 import common.controller.AbstractController;
 import jakarta.servlet.http.HttpServletRequest;
@@ -53,10 +54,29 @@ public class MemberRegister extends AbstractController {
 			member.setGender(gender);
 			member.setBirthday(birthday);
 
-			int n = mdao.registerMember(member);
-			if(n == 1) {
-				System.out.println("확인용 : 회원가입성공");
+			
+			// ==== 회원가입이 성공되어지면 회원가입 성공 이라는 alert를 띄우고 시작페이지로 이동 ==== //
+			String message = ""; 
+			String loc = ""; 
+			
+			try {
+				int n = mdao.registerMember(member);	
+				if(n==1) {
+					message = "회원가입 성공";
+					loc = request.getContextPath()+"/index.up";
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+				message = "회원가입 실패";
+				loc= "javascript:history.back()";
 			}
+			request.setAttribute("message", message);
+			request.setAttribute("loc", loc);
+			
+			super.setRedirect(false);
+			super.setViewPage("/WEB-INF/msg.jsp");
 		}	
 	}
 }
+
+
