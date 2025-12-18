@@ -129,9 +129,24 @@ select *
 from tbl_loginhistory
 order by historyno desc;
 
+
+-- 로그인 처리를 위한 SQL 문 작성 -- 
+update tbl_member set registerday = add_months(registerday, -14),
+                    lastpwdchangedate = add_months(lastpwdchangedate, -13)
+where userid = 'kangkc';
+commit;
+
+update tbl_member set registerday = add_months(registerday, -5),
+                    lastpwdchangedate = add_months(lastpwdchangedate, -4)
+where userid = 'leess';
+commit;
+
+
 SELECT userid, name, coin, point, 
     trunc( months_between(sysdate, lastpwdchangedate) ) AS pwdchangegap, 
     registerday, idle, email, mobile, postcode, address, detailaddress, extraaddress  
 FROM tbl_member
 WHERE status = 1 AND userid = 'sonyd' and pwd = '18006e2ca1c2129392c66d87334bd2452c572058d406b4e85f43c1f72def10f5';
+    
+    
     

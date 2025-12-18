@@ -144,47 +144,91 @@ public class MemberDAO_imple implements MemberDAO {
 	}
 
 	
-	// 로그인 처리
-	@Override
-	public MemberDTO login(Map<String, String> paraMap) throws SQLException {
-		
-		MemberDTO member = null;
-		
-		try {
-			conn = ds.getConnection();
-			
-			String sql = " SELECT userid, name, coin, point, "
-					   + " trunc( months_between(sysdate, lastpwdchangedate) ) AS pwdchangegap, "
-					   + " to_char(registerday,'yyyy-mm-dd') AS registerday, idle, email, mobile, postcode, address, detailaddress, extraaddress "
-					   + " FROM tbl_member "
-					   + " WHERE status = 1 AND userid = ? and pwd = ? ";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, paraMap.get("userid"));
-			pstmt.setString(2, Sha256.encrypt(paraMap.get("pwd")));
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				member = new MemberDTO();
-				
-				member.setUserid(rs.getString("userid"));
-				member.setName(rs.getString("name"));
-				member.setCoin(rs.getInt("coin"));
-				member.setPoint(rs.getInt("point"));
-				
-				// 마지막으로 암호를 변경한 날짜가 현재시각으로 부터 3개월이 지났으면 true
+   // 로그인 처리
+   @Override
+   public MemberDTO login(Map<String, String> paraMap) throws SQLException {
+      MemberDTO member = null;
+      
+      try {
+         conn = ds.getConnection();
+         String sql = " WITH "
+                  +" M AS ( "
+                  +"  SELECT userid, name, coin, point, "
+                  +"      trunc( months_between(sysdate, lastpwdchangedate) ) AS pwdchangegap, "
+                  +"      to_char(registerday, 'yyyy-mm-dd hh24:mi:ss') as registerday, idle, email, mobile, postcode, address, detailaddress, extraaddress "
+                  +"  FROM tbl_member "
+                  +"  WHERE status = 1 AND userid = ? and pwd = ? "
+                  +" ) "
+                  +" , H AS ( "
+                  +"  select trunc( months_between(sysdate, MAX(LOGINDATE)) ) AS LAST_LOGINDATE_GAP "
+                  +"  FROM tbl_loginhistory "
+                  +"  where fk_userid = ? "
+                  +" ) "
+                  +" SELECT userid, name, coin, point, pwdchangegap, registerday, idle, email, mobile "
+                  +"       ,postcode, address, detailaddress, extraaddress, LAST_LOGINDATE_GAP "
+                  +" FROM M CROSS JOIN H ";
+         pstmt = conn.prepareStatement(sql);
+         pstmt.setString(1, paraMap.get("userid"));
+         pstmt.setString(2, Sha256.encrypt(paraMap.get("pwd"))); // 암호화하여 넣어주어야 DB에서 비교가 가능! 
+         pstmt.setString(3, paraMap.get("userid"));
+         
+         rs = pstmt.executeQuery();
+         if(rs.next()) {
+            member = new MemberDTO();
+            member.setUserid(rs.getString("userid"));
+            member.setName(rs.getString("name"));
+            member.setCoin(rs.getInt("coin"));
+            member.setPoint(rs.getInt("point"));
+
+            // 마지막으로 암호를 변경한 날짜가 현재시각으로 부터 3개월이 지났으면 true
                 // 마지막으로 암호를 변경한 날짜가 현재시각으로 부터 3개월이 지나지 않았으면 false
-				member.setRegisterday(rs.getString("registerday"));
-				member.setIdle(rs.getInt("idle"));
-				member.setEmail(aes.decrypt(rs.getString("email")));
-				member.setMobile(aes.decrypt(rs.getString("mobile")));
-			}
-		} catch (UnsupportedEncodingException | GeneralSecurityException e) {
-			e.printStackTrace();
-		} finally {
-			close();
-		}
-		return member;
-	}
+            if(rs.getInt("pwdchangegap") >= 3) {
+               member.setRequirePwdChange(true); // 로그인 시 암호를 변경하라는 alert를 띄우기 위해 사용
+            }
+            
+            member.setRegisterday(rs.getString("registerday"));
+            member.setIdle(rs.getInt("idle"));
+            
+            member.setEmail(aes.decrypt(rs.getString("email"))); // 이메일은 암호화된 것으로 DB에 저장됐으므로 복호화하여 가져온다.
+            member.setMobile(aes.decrypt(rs.getString("mobile"))); // 이메일 또한 복호화하여 DB에서 가져온다.
+            
+            member.setPostcode(rs.getString("postcode"));
+            member.setAddress(rs.getString("address"));
+            member.setDetailaddress(rs.getString("detailaddress"));
+            member.setExtraaddress(rs.getString("extraaddress"));
+            
+            // === 휴면이 아니고, 마지막 로그인 일자가 1년 미만인 회원만 tbl_loginhistory(로그인기록) 테이블에 insert 하기 시작 === //
+            if(member.getIdle() == 0 && rs.getInt("LAST_LOGINDATE_GAP") < 12) {
+               sql = " insert into tbl_loginhistory(historyno, fk_userid, clientip)"
+                   +"   values(seq_historyno.nextval, ?, ?) ";
+               pstmt = conn.prepareStatement(sql);
+               pstmt.setString(1, paraMap.get("userid"));
+               pstmt.setString(2, paraMap.get("clientip"));
+               
+               pstmt.executeUpdate();
+            } else {
+               // 휴면이고, 마지막 로그인 일자가 1년 이상인 회원일 경우 휴면처리 해주기
+               member.setIdle(1); //MemberDTO 값 바꿔준 것
+               if(rs.getInt("idle") == 1) {
+                  // DB의 Idle 값도 1로 변경해주기
+                  sql = " update tbl_member set idle = 1 "
+                      +"   where userid = ? ";
+                  
+                  pstmt = conn.prepareStatement(sql);
+                  pstmt.setString(1, paraMap.get("userid"));
+                  
+                  pstmt.executeUpdate();
+               }
+            }
+            // === 휴면이 아닌 회원만 tbl_loginhistory(로그인기록) 테이블에 insert 하기 시작 === //
+            
+         }//end of if(rs.next())-----
+         
+      }
+      catch(GeneralSecurityException | UnsupportedEncodingException e) {e.printStackTrace();}
+      finally {close();}
+      
+      return member;
+   }//end of public MemberDTO login(Map<String, String> paraMap) throws SQLException-----
 
 }
