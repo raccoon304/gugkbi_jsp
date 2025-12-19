@@ -44,6 +44,27 @@
 	   	
 	   	
 	   	<%-- === 쿠키(Cookie) 값을 읽어올 때 자바스크립트를 이용하는 경우 끝 === --%>
+	   	
+	   	
+	//-------------------------------------------------------------------------------------------------------------//
+	// == 아이디 찾기에서 close 버튼 또는 x버튼을 클릭하면 iframe 의 form 태그에 입력된 값을 지우기 == //
+	$('button.idFindClose').click(function(){
+		const iframe_idFind = document.getElementById("iframe_idFind"); 
+		// 대상 아이프레임을 선택한다.
+		<%-- 선택자를 잡을때 jQuery를 사용한 ${} 으로 잡으면 안되고, 순수한 자바스크립트를 사용하여 선택자를 잡아야 한다. --%> 
+		<%-- .jsp 파일속에 주석문을 만들때 ${} 을 넣고자 한다라면 반드시 JSP 주석문으로 해야 하지, 스크립트 주석문으로 해주면 ${} 때문에 오류가 발생한다. --%>
+		
+		const iframe_window = iframe_idFind.contentWindow;
+		// iframe 요소에 접근하는 contentWindow 와 contentDocument 의 차이점은 아래와 같다.
+		// contentWindow 와 contentDocument 둘 모두 iframe 하위 요소에 접근 할 수 있는 방법이다.
+		// contentWindow 는 iframe의 window(전체)을 의미하는 것이다.
+		// 참고로, contentWindow.document 은 contentDocument 와 같은 것이다.
+		// contentWindow 가 contentDocument 의 상위 요소이다.
+		
+		iframe_window.func_form_reset_empty();// func_form_reset_empty() 함수는 idFind.jsp 파일에 정의해 둠.
+		
+	});//EoP$('button.idFindClose').click(function(){}
+	//-----	--------------------------------------------------------------------------------------------------------//
    	});
 </script>
 
@@ -173,8 +194,8 @@
         <!-- Modal body -->
         <div class="modal-body">
           <div id="pwFind">
-             <%-- <iframe style="border: none; width: 100%; height: 350px;" src="<%= ctx_Path%>/login/pwdFind.up">  
-             </iframe> --%>
+             <iframe style="border: none; width: 100%; height: 350px;" src="<%= ctx_Path%>/login/pwdFind.up">  
+             </iframe> 
           </div>
         </div>
         

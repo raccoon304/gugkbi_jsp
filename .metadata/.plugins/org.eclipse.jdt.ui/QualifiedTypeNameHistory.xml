@@ -22,8 +22,6 @@
     <fullyQualifiedTypeName name="java.util.Properties"/>
     <fullyQualifiedTypeName name="test.controller.Test1Controller"/>
     <fullyQualifiedTypeName name="java.lang.Object"/>
-    <fullyQualifiedTypeName name="java.util.Map"/>
-    <fullyQualifiedTypeName name="java.util.HashMap"/>
     <fullyQualifiedTypeName name="jakarta.servlet.RequestDispatcher"/>
     <fullyQualifiedTypeName name="common.controller.AbstractController"/>
     <fullyQualifiedTypeName name="java.sql.Connection"/>
@@ -45,6 +43,8 @@
     <fullyQualifiedTypeName name="java.io.Console"/>
     <fullyQualifiedTypeName name="java.sql.SQLException"/>
     <fullyQualifiedTypeName name="org.json.JSONObject"/>
-    <fullyQualifiedTypeName name="member.model.MemberDAO_imple"/>
+    <fullyQualifiedTypeName name="java.util.HashMap"/>
+    <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="member.model.MemberDAO"/>
+    <fullyQualifiedTypeName name="member.model.MemberDAO_imple"/>
 </qualifiedTypeNameHistroy>

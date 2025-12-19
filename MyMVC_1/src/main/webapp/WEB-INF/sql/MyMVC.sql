@@ -147,6 +147,18 @@ SELECT userid, name, coin, point,
     registerday, idle, email, mobile, postcode, address, detailaddress, extraaddress  
 FROM tbl_member
 WHERE status = 1 AND userid = 'sonyd' and pwd = '18006e2ca1c2129392c66d87334bd2452c572058d406b4e85f43c1f72def10f5';
+
+
+-- 1219
+
+select *
+from tbl_member
+where status = 1  and name = '손영대' and email = 'tOqmu3jV6wLKut4yIYx4fzUOY6CzWcnls0+u0mrGOec=';
+
+
+
+
+
     
     
     
