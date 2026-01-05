@@ -1,6 +1,5 @@
 package member.controller;
 
-import java.io.Console;
 import java.sql.SQLException;
 
 import common.controller.AbstractController;

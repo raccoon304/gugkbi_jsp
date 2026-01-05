@@ -484,8 +484,7 @@ function goRegister(){
 			alert("별 표시된 필수입력사항은 모두 입력해야 합니다.");
 			b_requiredInfo = false;
 			return false; //each의 경우 break가 아닌 return false;를 사용한다. 
-		}
-		
+		}	
 	});
 	if(!b_requiredInfo){
 				return;	//goRegister 함수를 종료한다. 

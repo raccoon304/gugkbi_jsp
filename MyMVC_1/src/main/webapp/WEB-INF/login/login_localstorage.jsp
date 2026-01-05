@@ -167,6 +167,28 @@
 	    });//EoP$('button.idFindClose').click(function(){}
     	//-------------------------------------------------------------------------------------------------------------//
 	    
+    	// == 비밀번호 찾기에서 close 버튼 또는 x 버튼을 클릭하면 새로고침 
+    	$('button.passwdFindClose').click(function(){
+    	    // 3번째 방법
+    		javascript:history.go(0);
+    		//현재 페이지를 새로고침을 함으로써 모달창에 입력한 userid와 email의 값이 텍스트박스에 남겨있지 않고 삭제하는 효과
+    		
+    		/* === 새로고침(다시읽기) 방법 3가지 차이점 ===
+            >>> 1. 일반적인 다시읽기 <<<
+            window.location.reload();
+            ==> 이렇게 하면 컴퓨터의 캐시에서 우선 파일을 찾아본다.
+                없으면 서버에서 받아온다. 
+            
+            >>> 2. 강력하고 강제적인 다시읽기 <<<
+            window.location.reload(true);
+            ==> true 라는 파라미터를 입력하면, 무조건 서버에서 직접 파일을 가져오게 된다.
+                캐시는 완전히 무시된다.
+            
+            >>> 3. 부드럽고 소극적인 다시읽기 <<<
+            history.go(0);
+            ==> 이렇게 하면 캐시에서 현재 페이지의 파일들을 항상 우선적으로 찾는다.
+         	*/
+    	});	
    	});// EoP function() 
 </script>
 
@@ -295,8 +317,9 @@
                   &nbsp;&nbsp;<fmt:formatNumber value="${sessionScope.loginUser.point}" pattern="###,###"/>&nbsp;POINT  
                </div>
                <br>로그인 중...<br><br>
-               [<a href="">내정보수정하기</a>]&nbsp;&nbsp;
-               [<a href="">코인충전</a>] 
+               [<a href="javascript:goEditMyInfo('${(sessionScope.loginUser).userid}', '<%= ctx_Path%>')">내정보수정하기</a>]&nbsp;&nbsp;
+               [<a href="javascript:goCoinPurchaseTypeChoice('${(sessionScope.loginUser).userid}', '<%= ctx_Path%>')">코인충전</a>] 
+               													<!-- (sessionScope.loginUser) 자체가 MemberDTO -->
                <br><br>
                                              <%-- contextPath는 변경될 수 있으므로 js에서 정의하는 것보단 jsp 파일에서 받아오는 것이 낫다! --%>
                <button type="button" class="btn btn-danger btn-sm" onclick="goLogOut('<%=ctx_Path%>')">로그아웃</button>

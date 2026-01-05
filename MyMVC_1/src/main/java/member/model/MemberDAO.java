@@ -1,6 +1,7 @@
 package member.model;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 import member.domain.MemberDTO;
@@ -26,5 +27,31 @@ public interface MemberDAO {
 
 	// 비밀번호 찾기 후 정상적인 인증 완료하였을때, 비밀번호를 새로 변경한다. 
 	int pwdUpdate(Map<String, String> paraMap) throws SQLException;
+
+	// 회원의 코인 및 포인트 증가하기.
+	int coinUpdateLoginUser(Map<String, String> paraMap) throws SQLException;
+
+	// 이메일 중복검사 (tbl_member 테이블에서 email 이 존재하면 true 를 리턴해주고, email 이 존재하지 않으면 false 를 리턴한다)
+	boolean emailDuplicateCheck2(Map<String, String> paraMap) throws SQLException;
+	
+	// 비밀번호 변경시 현재 사용중인 비밀번호인지 아닌지 알아오기(현재 사용중인 비밀번호 이라면 true, 새로운 비밀번호이라면 false)
+	boolean duplicatePwdCheck(Map<String, String> paraMap) throws SQLException;
+
+	int updateMember(MemberDTO mbDto) throws SQLException;
+
+	//페이징 처리를 안한 모든 회원 또는 검색한 회원 목록보여주기
+	List<MemberDTO> selectMemberNopaging(Map<String, String> paraMap) throws SQLException;
+
+	// **** 페이징 처리를 한 모든 회원 또는 검색한 회원 목록 보여주기 
+	List<MemberDTO> selectMemberpaging(Map<String, String> paraMap) throws SQLException;
+
+	//페이징 처리를 위한 검색이 있는 또는 검색이 없는 회원에 대한 총페이지수 알아오기//
+	int getTotalPage(Map<String, String> paraMap) throws SQLException;
+
+	//뷰단(memberList.jsp)에서 "페이징 처리시 보여주는 순번 공식" 에서 사용하기 위해 검색이 있는 또는 검색이 없는 회원의 총개수 알아오기
+	int getTotalMemberCount(Map<String, String> paraMap) throws SQLException;
+
+	// 입력받은 userid를 통해 한명의 회원정보를 리턴 한다.
+	MemberDTO selectOneMember(String userid) throws SQLException;
 	
 }

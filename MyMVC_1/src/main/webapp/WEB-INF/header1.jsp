@@ -5,6 +5,8 @@
     String ctxPath = request.getContextPath();
     //    /MyMVC
 %>
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,17 +63,26 @@
           <li class="nav-item">
              <a class="nav-link menufont_size" href="<%= ctxPath %>/shop/mallHomeScroll.up">쇼핑몰홈[스크롤]</a>
           </li>
-          <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle menufont_size text-primary" href="#" id="navbarDropdown" data-toggle="dropdown"> 
-                 관리자전용                             <%-- .text-primary 는 글자색으로 파랑색임 --%>  
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                 <a class="dropdown-item text-primary" href="<%= ctxPath %>/member/memberList.up">회원목록</a>
-                 <a class="dropdown-item text-primary" href="<%= ctxPath %>/shop/admin/productRegister.up">제품등록</a>
-                 <div class="dropdown-divider"></div>
-                 <a class="dropdown-item text-primary" href="<%= ctxPath %>/shop/orederList.up">전체주문내역</a>
-              </div>
-           </li>
+         
+           
+           <!-- admin으로 로그인한 경우에만 뜨도록 하기 -->
+         <!-- 추가로 경로로 인해 관리자 페이지에 접속할 수도 있으므로 이에 대한 코딩작업도 해주어야 함! -->
+         <c:if test="${not empty sessionScope.loginUser && sessionScope.loginUser.userid == 'admin'}">
+            <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle menufont_size text-primary" href="#" id="navbarDropdown" data-toggle="dropdown">
+                  관리자전용
+               </a>
+               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item text-primary" href="<%=ctxPath%>/admin/member/memberList.up">회원목록</a>
+                  <a class="dropdown-item text-primary" href="<%=ctxPath%>/shop/admin/productRegister.up">제품등록</a>
+               <div class="dropdown-divider"></div>
+                  <a class="dropdown-item text-primary" href="<%=ctxPath%>/shop/orderList.up">전체주문내역</a>
+               </div>
+            </li>
+         </c:if>
+           
+           
+           
         </ul>
       </div>
    </nav>

@@ -28,6 +28,14 @@
     -->
 
 	<!-- ======= MyDBCP Setting Start ======= -->
-	<Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="jdbc/myoracle" password="sistsix" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:xe" username="MYMVC_USER"/>
+	<Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="10000" name="jdbc/myoracle" password="sistsix" type="javax.sql.DataSource" url="jdbc:oracle:thin:@127.0.0.1:1521:xe" username="MYMVC_USER"/>
     <!-- ======= MyDBCP Setting End ======= -->
+
+
+
+	<!-- ======= SemiProject Setting Start ======= -->
+	<Resource auth="Container" driverClassName="oracle.jdbc.OracleDriver" maxIdle="10" maxTotal="20" maxWaitMillis="-1" name="SemiProject" password="sistsix" type="javax.sql.DataSource" url="jdbc:oracle:thin:@211.63.89.70:1521:xe" username="semi_orauser2"/>
+    <!-- ======= SemiProject Setting End ======= -->
+
+
 </Context>
