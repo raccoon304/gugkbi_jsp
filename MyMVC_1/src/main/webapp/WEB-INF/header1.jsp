@@ -63,6 +63,24 @@
           <li class="nav-item">
              <a class="nav-link menufont_size" href="<%= ctxPath %>/shop/mallHomeScroll.up">쇼핑몰홈[스크롤]</a>
           </li>
+          
+          
+             <!-- admin으로 로그인한 경우에만 뜨도록 하기 -->
+         <!-- 추가로 경로로 인해 관리자 페이지에 접속할 수도 있으므로 이에 대한 코딩작업도 해주어야 함! -->
+         <c:if test="${not empty sessionScope.loginUser && sessionScope.loginUser.userid != 'admin'}">
+            <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle menufont_size text-primary" href="#" id="navbarDropdown" data-toggle="dropdown">
+                  장바구니/주문
+               </a>
+               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item text-primary" href="<%=ctxPath%>/shop/cartList.up">장바구니</a>
+                  <a class="dropdown-item text-primary" href="<%=ctxPath%>/shop/opderList.up">나의주문내역</a>
+               <div class="dropdown-divider"></div>
+                  <a class="dropdown-item text-primary" href="<%=ctxPath%>/shop/chart.up">주문통계차트보기</a>
+               </div>
+            </li>
+         </c:if>
+          
          
            
            <!-- admin으로 로그인한 경우에만 뜨도록 하기 -->
@@ -74,7 +92,7 @@
                </a>
                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item text-primary" href="<%=ctxPath%>/admin/member/memberList.up">회원목록</a>
-                  <a class="dropdown-item text-primary" href="<%=ctxPath%>/shop/admin/productRegister.up">제품등록</a>
+                  <a class="dropdown-item text-primary" href="<%=ctxPath%>/admin/shop/productRegister.up">제품등록</a>
                <div class="dropdown-divider"></div>
                   <a class="dropdown-item text-primary" href="<%=ctxPath%>/shop/orderList.up">전체주문내역</a>
                </div>
@@ -105,6 +123,9 @@
 		            <%-- ==== 로그인 처리하기 ==== --%>>
 		            <%-- <%@ include file="/WEB-INF/login/login_cookie.jsp" %> --%>
 		            <%@ include file="/WEB-INF/login/login_localstorage.jsp" %>
+		            <%-- == 쇼핑몰 카테고리목록만을 보여주는 부분 (header1.jsp 에만 있음) == --%>
+            	<div id="categoryList" style="margin-top: 100px;"></div> 
+            		
 		        </div>
 		        <div id="sidecontent" style="text-align: left; padding: 20px;"></div>
 	        </div>

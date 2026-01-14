@@ -3,6 +3,7 @@ package common.controller;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletConfig;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebInitParam;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -17,8 +18,68 @@ import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+//>>> Servlet 3.0 부터 (톰캣버전 7.0 이후 부터 사용가능) 제공되는 Part 인터페이스를 이용해 파일업로드를 구현한다 <<< //
+/*
+ Tomcat은 기본적으로 전송할 데이터의 크기를 최대 2MB로 설정해 두었다. 
+ 그래서 파일 업로드시 파일의 총합의 크기가 2MB 를 초과한 경우에는 아래와 같은 오류가 발생한다.
+ 톰캣의 기본 최대 업로드 용량은 2MB이다. 
+ java.lang.IllegalStateException: org.apache.tomcat.util.http.fileupload.impl.SizeLimitExceededException: the request was rejected because its size (82026823) exceeds the configured maximum (2097152)
 
+ 이 크기를 변경하고자 한다면 tomcat의 server.xml 에서
+ <Connector port="9090" URIEncoding="UTF-8" protocol="HTTP/1.1"
+           connectionTimeout="20000"
+           redirectPort="8443"
+           maxParameterCount="1000"
+           /> 을
+ <Connector port="9090" URIEncoding="UTF-8" protocol="HTTP/1.1"
+           connectionTimeout="20000"
+           redirectPort="8443"
+           maxParameterCount="1000"
+           maxPostSize="20971520"
+           />
+ maxPostSize="20971520" 을 추가해주면 된다. 20971520 이 20MB 이다. 단위는 byte 단위로 적어주어야 한다.
 
+ ◈ maxPostSize
+ maxPostSize의 기본값을 넘을 경우 파라미터를 null 처리하여 서버에서 파라미터를 받을 수 없다. 
+ 아파치 톰캣의 기본 설정값은 2097152(2MB)로 이 이상의 사이즈를 보내게 되면 FaildRequestFilter에서 요청을 거부한다. 
+ 0보다 작은 값으로 설정하여 이 제한을 비활성화할 수 있다. 
+ maxPostSize="-1"
+ 
+ ◈ maxParameterCount
+ maxParmaeterCount의 기본 값이 넘을 경우 기본 값에 해당하는 파라미터 수만 가져오고 나머지 파라미터는 가져오지 못한다. 
+ 기본 파라미터의 제한 개수는 10000개이며 이 이상의 파라미터를 보내게 되면 FaildRequestFilter에서 요청을 거부한다. 
+ 0보다 작은 값으로 설정하여 이 제한을 비활성화할 수 있다.
+ maxParameterCount="-1"
+ 
+ ◈ URIEncoding
+ Get 요청을 처리 시 사용할 인코딩 방식 설정.
+ Tomcat 7.0 은 기본적으로 ISO-8859-1 이라서, 한글 사용을 위해 UTF-8로 변경해줌.
+ Tomcat 8.0 이후 부터는 기본값이 UTF-8 이라서 추가로 넣어줄 필요가 없다.
+ 
+ ◈ connectionTimeout
+ Tomcat 서버 와 클라언트 간에 Connection이 연결된 이후 실제 요청이 들어올때까지 대기 시간이다. 단위는 ms(밀리초)
+ connectionTimeout="20000" 은 20초 이다.
+ connectionTimeout="-1" 은 타임아웃의 제한이 없다
+ 
+ ◈ redirectPort
+ SSL통신(https://)을 하기위한 것으로서, redirectPort="8443" 이라함은 SSL통신(https://)을 하기위해 8443 포트로 설정해둔것이 있을경우라면
+ port="9090" 을 사용하여 http:// 통신으로 연결을 시도하면 "8443" 포트번호로 되어진 SSL통신(https://)으로 자동적으로 변경되어 연결을 맺어준다는 것이다.  
+ 
+ */
+/*
+@MultipartConfig(location = "C:\\NCS\\workspace_jsp\\MyMVC\\images_temp_upload",
+                 fileSizeThreshold = 1024,  // 이 크기 값(1024 byte)을 넘지 않으면 업로드된 데이터를 메모리상에 가지고 있지만, 이값을 넘는 경우 위의 location 로 지정된 경로에 임시파일로 저장된다.  
+                                            // 메모리상에 저장된 파일 데이터는 언젠가 제거된다. 하지만 크기가 큰 파일을 메모리상에 올리게 되면 서버에 부하를 줄 수 있으므로 적당한 크기를 지정해주고, 그 이상크기의 파일은 임시파일로 저장하는것이 좋다.    
+                                            // 만약에 기재 하지 않으면 기본값은 0 이다. 0 을 쓰면 무조건 임시디렉토리에 저장된다.
+                 maxFileSize = 20971520,    // 업로드 되어질 파일들을 합친 최대 크기. 단위는 byte 임. 20*1024*1024 즉, 20MB. 기본은 -1L 즉, 제한이 없음.   
+                 maxRequestSize = 31457280  // multipart/form-data 상태인 폼태그에 요청되어지는 모든 전송데이터 및 모든 파일들을 합친 크기. 단위는 byte 임. 30*1024*1024 즉, 30MB. 기본은 -1L 즉, 제한이 없음.
+                )                                               
+*/
+
+@MultipartConfig (//// 위의 location 을 기입하지 않으면 Windows 는 자동적으로 C:\Windows\Temp 디렉토리를 사용하도록 되어있다.
+		maxFileSize = 20971520,
+		maxRequestSize = 31457280
+		)
 @WebServlet(
 		description = "사용자가 웹에서 *.up을 했을 경우 이 서블릿이 응답을 해주도록 한다.", 
 		urlPatterns = { "*.up" },  

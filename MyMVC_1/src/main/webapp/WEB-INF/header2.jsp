@@ -3,6 +3,7 @@
     
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
     
+    
 <%
     String ctxPath = request.getContextPath();
     //    /MyMVC
@@ -73,7 +74,7 @@
 	              </a>
 	              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 	                 <a class="dropdown-item text-primary" href="<%= ctxPath %>/admin/member/memberList.up">회원목록</a>
-	                 <a class="dropdown-item text-primary" href="<%= ctxPath %>/admin/shop/admin/productRegister.up">제품등록</a>
+	                 <a class="dropdown-item text-primary" href="<%= ctxPath %>/admin/shop/productRegister.up">제품등록</a>
 	                 <div class="dropdown-divider"></div>
 	                 <a class="dropdown-item text-primary" href="<%= ctxPath %>/admin/shop/orderList.up">전체주문내역</a>
 	              </div>
